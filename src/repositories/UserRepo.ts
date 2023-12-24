@@ -1,5 +1,5 @@
 import { User } from "@/services/UserService";
-import { NotFoundError } from "@utils/errors";
+import { NotFoundError } from "@/utils/errors";
 
 export interface IUserRepository {
   getAll: () => Promise<User[]>;

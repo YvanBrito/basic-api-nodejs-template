@@ -1,5 +1,5 @@
 import { IUserService, userService } from "@/services/UserService";
-import { NotFoundError } from "@utils/errors";
+import { NotFoundError } from "@/utils/errors";
 
 class UserController {
   constructor(private userService: IUserService) {}
