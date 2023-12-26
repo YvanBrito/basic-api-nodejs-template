@@ -1,4 +1,8 @@
-node_modules
-dist
-coverage
+.idea/
+.vscode/
+node_modules/
+dist/
+coverage/
+tmp/
+temp/
 .env

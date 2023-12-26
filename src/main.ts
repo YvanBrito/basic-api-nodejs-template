@@ -5,6 +5,7 @@ import express, { NextFunction, Request, Response } from "express";
 import routes from "./routes";
 import { createChatServer } from "./socket/chat";
 import { HttpErrorResponse } from "./utils/errors";
+import { AppDataSource } from "./data-source";
 
 function errorHandler(
   err: Error,
@@ -29,17 +30,21 @@ function errorHandler(
 
 const PORT = process.env.NODE_LOCAL_PORT;
 
-const app = express();
+AppDataSource.initialize()
+  .then(async () => {
+    const app = express();
 
-app.use(express.json());
-app.use(express.static("public"));
-app.use(routes);
-app.use(errorHandler);
+    app.use(express.json());
+    app.use(express.static("public"));
+    app.use(routes);
+    app.use(errorHandler);
 
-const server = createServer(app);
+    const server = createServer(app);
 
-createChatServer(server).listen();
+    createChatServer(server).listen();
 
-server.listen(PORT, () => {
-  console.log(`server running at http://localhost:${PORT}`);
-});
+    server.listen(PORT, () => {
+      console.log(`server running at http://localhost:${PORT}`);
+    });
+  })
+  .catch((error) => console.log(error));
