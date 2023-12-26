@@ -1,9 +1,9 @@
-import { Server } from "node:http";
+import { Server as ServerNode } from "node:http";
 import { Server as ServerSocket } from "socket.io";
 
 class ChatServer {
   private io: ServerSocket;
-  constructor(server: Server) {
+  constructor(server: ServerNode) {
     this.io = new ServerSocket(server);
   }
   listen() {
@@ -15,6 +15,6 @@ class ChatServer {
   }
 }
 
-const createChatServer = (server: Server) => new ChatServer(server);
+const createChatServer = (server: ServerNode) => new ChatServer(server);
 
 export { createChatServer };

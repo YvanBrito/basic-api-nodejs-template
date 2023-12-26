@@ -1,7 +1,13 @@
-export class NotFoundError extends Error {
+export class HttpErrorResponse extends Error {
   public statusCode: number;
-  constructor(_message: string) {
+  constructor(_statusCode: number, _message: string) {
     super(_message);
-    this.statusCode = 404;
+    this.statusCode = _statusCode;
+  }
+}
+
+export class NotFoundError extends HttpErrorResponse {
+  constructor(_message: string) {
+    super(404, _message);
   }
 }
