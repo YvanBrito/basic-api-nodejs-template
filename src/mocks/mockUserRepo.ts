@@ -1,6 +1,6 @@
 import { IUserRepository } from "@/repositories/UserRepo";
 import { User } from "@/services/UserService";
-import { NotFoundError } from "@utils/errors";
+import { NotFoundError } from "@/utils/errors";
 
 export class MockUserRepository implements IUserRepository {
   private users: User[];
