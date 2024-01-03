@@ -24,7 +24,7 @@ services:
       dockerfile: ./Dockerfile
     command: npm run dev
     ports:
-      - 3000:3000
+      - $NODE_LOCAL_PORT:$NODE_LOCAL_PORT
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules

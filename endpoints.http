@@ -1,0 +1,15 @@
+@apiurl = http://localhost:3000
+
+### GET users
+GET {{apiurl}}/users HTTP/1.1
+
+### POST users
+POST {{apiurl}}/users HTTP/1.1
+content-type: application/json
+
+{
+    "firstName":"Yvan",
+    "lastName":"Brito",
+    "age":27,
+    "birthday":"1996-01-26T12:00:00Z"
+}

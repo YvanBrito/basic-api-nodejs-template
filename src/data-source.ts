@@ -1,9 +1,9 @@
-import "reflect-metadata";
-import { DataSource } from "typeorm";
-import { User } from "./entity/User";
+import 'reflect-metadata'
+import { DataSource } from 'typeorm'
+import { User } from '@/modules/users/entity/User'
 
 export const AppDataSource = new DataSource({
-  type: "postgres",
+  type: 'postgres',
   host: process.env.POSTGRESDB_HOST,
   port: Number(process.env.POSTGRESDB_DOCKER_PORT),
   username: process.env.POSTGRESDB_USER,
@@ -14,4 +14,4 @@ export const AppDataSource = new DataSource({
   entities: [User],
   migrations: [],
   subscribers: [],
-});
+})
