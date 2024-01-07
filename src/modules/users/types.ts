@@ -1,22 +1,23 @@
 export interface IUser {
-  id: number
+  id?: number
   firstName: string
   lastName: string
+  email: string
   age: number
   birthday: Date
-  created_at: Date
-  updated_at: Date
-  deleted_at: Date
+  hashed_password: string
+  salt: string
+  created_at?: Date
+  deleted_at?: Date
+  updated_at?: Date
 }
 
 export interface IUserService {
   getAll: () => Promise<IUser[]>
   getById: (id: string) => Promise<IUser>
-  create: (user: IUser) => Promise<IUser>
 }
 
 export interface IUserRepository {
   getAll: () => Promise<IUser[]>
   getById: (id: string) => Promise<IUser | null>
-  create: (user: IUser) => Promise<IUser>
 }

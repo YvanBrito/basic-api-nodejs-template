@@ -8,7 +8,7 @@
     "node": ">=20.10.0 <21.0.0"
   },
   "scripts": {
-    "start": "node dist/main.js",
+    "start": "node --env-file=.env dist/main.js",
     "build": "rimraf ./dist && tsc && tsc-alias",
     "dev": "node --watch --env-file=.env -r ts-node/register -r tsconfig-paths/register ./src/main.ts",
     "lint": "npx eslint src",

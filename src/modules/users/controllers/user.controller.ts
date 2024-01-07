@@ -1,5 +1,5 @@
 import { userService } from '@/modules/users/services/user.service'
-import { IUser, IUserService } from '../types'
+import { IUserService } from '../types'
 
 class UserController {
   constructor(private userService: IUserService) {}
@@ -17,14 +17,6 @@ class UserController {
     return {
       statusCode: 200,
       body: user,
-    }
-  }
-
-  async create(user: IUser) {
-    const newUser = await this.userService.create(user)
-    return {
-      statusCode: 200,
-      body: newUser,
     }
   }
 }

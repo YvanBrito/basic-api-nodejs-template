@@ -14,10 +14,6 @@ export class UserService implements IUserService {
 
     return foundUser as IUser
   }
-
-  async create(user: IUser): Promise<IUser> {
-    return await this.userRepository.create(user)
-  }
 }
 
 export const userService = new UserService(new UserPostgresRepository())

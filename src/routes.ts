@@ -1,2 +1,3 @@
 import userRoutes from './modules/users/routes'
-export default [userRoutes]
+import signUpRoutes from './modules/auth/routes'
+export default [userRoutes, signUpRoutes]

@@ -8,10 +8,13 @@ import {
 } from 'typeorm'
 import { IUser } from '../types'
 
-@Entity()
+@Entity('users')
 export class User implements IUser {
   @PrimaryGeneratedColumn()
   id!: number
+
+  @Column({ unique: true })
+  email!: string
 
   @Column()
   firstName!: string
@@ -21,6 +24,12 @@ export class User implements IUser {
 
   @Column()
   age!: number
+
+  @Column()
+  hashed_password!: string
+
+  @Column()
+  salt!: string
 
   @Column({ type: 'timestamptz' })
   birthday!: Date
