@@ -1,4 +1,4 @@
-@apiurl = http://localhost:3000
+@apiurl = http://localhost:3000/api
 
 ### GET users
 GET {{apiurl}}/users HTTP/1.1
@@ -15,6 +15,15 @@ content-type: application/json
     "lastName":"Brito",
     "age":27,
     "birthday":"1996-01-26T12:00:00Z",
+    "email": "yvan@test.com",
+    "password": "123456"
+}
+
+### POST login user
+POST {{apiurl}}/login HTTP/1.1
+content-type: application/json
+
+{
     "email": "yvan@test.com",
     "password": "123456"
 }

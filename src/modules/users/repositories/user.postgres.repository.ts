@@ -14,4 +14,10 @@ export class UserPostgresRepository implements IUserRepository {
       id: Number(id),
     })
   }
+
+  async getByEmail(email: string): Promise<IUser | null> {
+    return await this.userRepository.findOneBy({
+      email,
+    })
+  }
 }

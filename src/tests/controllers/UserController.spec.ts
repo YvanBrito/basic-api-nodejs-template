@@ -1,4 +1,4 @@
-import { UserController } from '@/modules/users/controllers'
+import { UserController } from '@/modules/users/controllers/user.controller'
 import { MockUserRepository } from '@/modules/users/mocks/mockUserRepo'
 import { UserService } from '@/modules/users/services/user.service'
 import { IUser } from '@/modules/users/types'

@@ -1,6 +1,6 @@
 import { IUser } from '../users/types'
 
-export interface createUserRequest {
+export interface CreateUserRequest {
   firstName: string
   lastName: string
   email: string
@@ -9,14 +9,20 @@ export interface createUserRequest {
   password: string
 }
 
-export interface ISignUpService {
-  signup: (user: createUserRequest) => Promise<IUser>
+export interface LoginUserRequest {
+  email: string
+  password: string
 }
 
-export interface IGetByEmailRepository {
-  getByEmail: (email: string) => Promise<IUser | null>
+export interface LoginUserResponse {
+  token: string
 }
 
-export interface ISaveUserRepository {
+export interface IAuthService {
+  signup: (user: CreateUserRequest) => Promise<void>
+  // login: (user: LoginUserRequest) => Promise<LoginUserResponse>
+}
+
+export interface IAuthRepository {
   save: (user: IUser) => Promise<IUser>
 }

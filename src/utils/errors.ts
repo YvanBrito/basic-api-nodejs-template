@@ -17,3 +17,15 @@ export class DuplicateError extends HttpErrorResponse {
     super(409, _message)
   }
 }
+
+export class BadRequestError extends HttpErrorResponse {
+  constructor(_message: string) {
+    super(400, _message)
+  }
+}
+
+export class UnauthorizedError extends HttpErrorResponse {
+  constructor(_message: string) {
+    super(401, _message)
+  }
+}
