@@ -2,6 +2,7 @@ import { UserController } from '@/modules/users/controllers/user.controller'
 import { MockUserRepository } from '@/modules/users/mocks/mockUserRepo'
 import { UserService } from '@/modules/users/services/user.service'
 import { IUser } from '@/modules/users/types'
+import { NotFoundError } from '@/utils/errors'
 
 const usersMocked: IUser[] = [
   {
@@ -52,8 +53,8 @@ describe('UsersController', () => {
   })
 
   it('should return 404 error with a message', async () => {
-    const { statusCode, body } = await userController.getById('3')
-    expect(statusCode).toEqual(404)
-    expect(body).toEqual('Usuário não encontrado')
+    await expect(userController.getById('3')).rejects.toEqual(
+      new NotFoundError('Usuário não encontrado'),
+    )
   })
 })
