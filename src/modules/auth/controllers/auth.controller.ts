@@ -1,5 +1,5 @@
-import { authService } from "../services/auth.service";
-import { IAuthService, CreateUserRequest } from "../types";
+import { authService } from '../services/auth.service';
+import { IAuthService, CreateUserRequest } from '../types';
 
 class AuthController {
   constructor(private authService: IAuthService) {}
@@ -8,7 +8,7 @@ class AuthController {
     await this.authService.signup(createUserRequest);
     return {
       statusCode: 200,
-      body: "",
+      body: '',
     };
   }
 

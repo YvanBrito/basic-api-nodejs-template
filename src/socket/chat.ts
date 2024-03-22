@@ -1,5 +1,5 @@
-import { Server as ServerNode } from "node:http";
-import { Server as ServerSocket } from "socket.io";
+import { Server as ServerNode } from 'node:http';
+import { Server as ServerSocket } from 'socket.io';
 
 class ChatServer {
   private io: ServerSocket;
@@ -7,9 +7,9 @@ class ChatServer {
     this.io = new ServerSocket(server);
   }
   listen() {
-    this.io.on("connection", (socket) => {
-      socket.on("chat message", (msg) => {
-        this.io.emit("chat message", msg);
+    this.io.on('connection', (socket) => {
+      socket.on('chat message', (msg) => {
+        this.io.emit('chat message', msg);
       });
     });
   }

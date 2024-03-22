@@ -1,6 +1,6 @@
-import { UserPostgresRepository } from "@/modules/users/repositories/user.postgres.repository";
-import { IUser, IUserRepository, IUserService } from "../types";
-import { NotFoundError } from "@/utils/errors";
+import { UserPostgresRepository } from '@/modules/users/repositories/user.postgres.repository';
+import { IUser, IUserRepository, IUserService } from '../types';
+import { NotFoundError } from '@/utils/errors';
 
 export class UserService implements IUserService {
   constructor(public userRepository: IUserRepository) {}
@@ -10,7 +10,7 @@ export class UserService implements IUserService {
 
   async getById(id: string): Promise<IUser> {
     const foundUser = await this.userRepository.getById(id);
-    if (!foundUser) throw new NotFoundError("Usuário não encontrado");
+    if (!foundUser) throw new NotFoundError('Usuário não encontrado');
 
     return foundUser as IUser;
   }

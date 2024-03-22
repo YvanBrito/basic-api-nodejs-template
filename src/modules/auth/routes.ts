@@ -1,12 +1,12 @@
-import { Router } from "express";
-import passport from "passport";
-import jwt from "jsonwebtoken";
-import { authController } from "./controllers/auth.controller";
-import { HttpErrorResponse } from "@/utils/errors";
+import { Router } from 'express';
+import passport from 'passport';
+import jwt from 'jsonwebtoken';
+import { authController } from './controllers/auth.controller';
+import { HttpErrorResponse } from '@/utils/errors';
 
 const authRoutes = Router();
 
-authRoutes.post("/signup", async (req, res, next) => {
+authRoutes.post('/signup', async (req, res, next) => {
   try {
     const newUser = req.body;
     const { statusCode, body } = await authController.signup(newUser);
@@ -16,9 +16,9 @@ authRoutes.post("/signup", async (req, res, next) => {
   }
 });
 
-authRoutes.post("/login", async (req, res, next) => {
+authRoutes.post('/login', async (req, res, next) => {
   passport.authenticate(
-    "local",
+    'local',
     async (err: unknown, user: { id: string; email: string }) => {
       if (err || !user) {
         const { statusCode, message } = err as HttpErrorResponse;
@@ -33,7 +33,7 @@ authRoutes.post("/login", async (req, res, next) => {
         if (error) return next(error);
 
         const body = { id: user.id, email: user.email };
-        const token = jwt.sign({ user: body }, "TOP_SECRET");
+        const token = jwt.sign({ user: body }, 'TOP_SECRET');
 
         return res.json({ token });
       });

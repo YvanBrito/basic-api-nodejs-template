@@ -1,5 +1,5 @@
-import { userService } from "@/modules/users/services/user.service";
-import { IUserService } from "../types";
+import { userService } from '@/modules/users/services/user.service';
+import { IUserService } from '../types';
 
 class UserController {
   constructor(private userService: IUserService) {}

@@ -1,5 +1,5 @@
-import { HttpErrorResponse } from "@/utils/errors";
-import { Request, Response, NextFunction } from "express";
+import { HttpErrorResponse } from '@/utils/errors';
+import { Request, Response, NextFunction } from 'express';
 
 export function errorHandler(
   err: Error,
@@ -17,7 +17,7 @@ export function errorHandler(
   }
   res.status(500).json({
     statusCode: 500,
-    message: "Internal Server Error",
+    message: 'Internal Server Error',
   });
   next(err);
 }

@@ -1,5 +1,5 @@
-import { NotFoundError } from "@/utils/errors";
-import { IUser, IUserRepository } from "../types";
+import { NotFoundError } from '@/utils/errors';
+import { IUser, IUserRepository } from '../types';
 
 export class MockUserRepository implements IUserRepository {
   private users: IUser[];
@@ -17,7 +17,7 @@ export class MockUserRepository implements IUserRepository {
 
   async getById(id: string): Promise<IUser> {
     const foundUser = this.users.find((user) => user.id?.toString() === id);
-    if (!foundUser) throw new NotFoundError("Usuário não encontrado");
+    if (!foundUser) throw new NotFoundError('Usuário não encontrado');
 
     return foundUser;
   }
@@ -26,7 +26,7 @@ export class MockUserRepository implements IUserRepository {
     const foundUser = this.users.find(
       (user) => user.email.toString() === email,
     );
-    if (!foundUser) throw new NotFoundError("Usuário não encontrado");
+    if (!foundUser) throw new NotFoundError('Usuário não encontrado');
 
     return foundUser;
   }

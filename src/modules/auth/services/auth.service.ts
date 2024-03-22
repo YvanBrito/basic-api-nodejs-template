@@ -1,9 +1,9 @@
-import { randomBytes, createHash } from "node:crypto";
-import { DuplicateError } from "@/utils/errors";
-import { IUser, IUserRepository } from "@/modules/users/types";
-import { IAuthService, IAuthRepository, CreateUserRequest } from "../types";
-import { UserPostgresRepository } from "@/modules/users/repositories";
-import { AuthPostgresRepository } from "../repositories/auth.postgres.repository";
+import { randomBytes, createHash } from 'node:crypto';
+import { DuplicateError } from '@/utils/errors';
+import { IUser, IUserRepository } from '@/modules/users/types';
+import { IAuthService, IAuthRepository, CreateUserRequest } from '../types';
+import { UserPostgresRepository } from '@/modules/users/repositories';
+import { AuthPostgresRepository } from '../repositories/auth.postgres.repository';
 
 export class AuthService implements IAuthService {
   constructor(
@@ -15,13 +15,13 @@ export class AuthService implements IAuthService {
     const foundUser = await this.userRepository.getByEmail(
       createUserRequest.email,
     );
-    if (foundUser) throw new DuplicateError("Usuário com este email já existe");
+    if (foundUser) throw new DuplicateError('Usuário com este email já existe');
 
-    const salt = randomBytes(16).toString("base64");
-    const hashed_password = createHash("sha256")
+    const salt = randomBytes(16).toString('base64');
+    const hashed_password = createHash('sha256')
       .update(createUserRequest.password)
-      .update(createHash("sha256").update(salt, "utf8").digest("hex"))
-      .digest("hex");
+      .update(createHash('sha256').update(salt, 'utf8').digest('hex'))
+      .digest('hex');
 
     const newUser: IUser = {
       firstName: createUserRequest.firstName,

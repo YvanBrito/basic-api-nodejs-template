@@ -1,6 +1,6 @@
-import { IUser, IUserRepository } from "../types";
-import { AppDataSource } from "@/data-source";
-import { User } from "../entity/User";
+import { IUser, IUserRepository } from '../types';
+import { AppDataSource } from '@/data-source';
+import { User } from '../entity/User';
 
 export class UserPostgresRepository implements IUserRepository {
   private userRepository = AppDataSource.getRepository(User);

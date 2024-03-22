@@ -5,10 +5,10 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   UpdateDateColumn,
-} from "typeorm";
-import { IUser } from "../types";
+} from 'typeorm';
+import { IUser } from '../types';
 
-@Entity("users")
+@Entity('users')
 export class User implements IUser {
   @PrimaryGeneratedColumn()
   id!: number;
@@ -31,7 +31,7 @@ export class User implements IUser {
   @Column()
   salt!: string;
 
-  @Column({ type: "timestamptz" })
+  @Column({ type: 'timestamptz' })
   birthday!: Date;
 
   @CreateDateColumn()
