@@ -1,5 +1,5 @@
-import { HttpErrorResponse } from '@/utils/errors'
-import { Request, Response, NextFunction } from 'express'
+import { HttpErrorResponse } from "@/utils/errors";
+import { Request, Response, NextFunction } from "express";
 
 export function errorHandler(
   err: Error,
@@ -8,16 +8,16 @@ export function errorHandler(
   next: NextFunction,
 ) {
   if (err instanceof HttpErrorResponse) {
-    const { statusCode, message } = err as HttpErrorResponse
+    const { statusCode, message } = err as HttpErrorResponse;
     res.status(statusCode).json({
       statusCode,
       message,
-    })
-    return
+    });
+    return;
   }
   res.status(500).json({
     statusCode: 500,
-    message: 'Internal Server Error',
-  })
-  next(err)
+    message: "Internal Server Error",
+  });
+  next(err);
 }

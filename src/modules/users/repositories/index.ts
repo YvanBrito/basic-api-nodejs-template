@@ -1,1 +1,1 @@
-export * from './user.postgres.repository'
+export * from "./user.postgres.repository";

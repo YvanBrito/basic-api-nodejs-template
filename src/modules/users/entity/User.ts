@@ -5,41 +5,41 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   UpdateDateColumn,
-} from 'typeorm'
-import { IUser } from '../types'
+} from "typeorm";
+import { IUser } from "../types";
 
-@Entity('users')
+@Entity("users")
 export class User implements IUser {
   @PrimaryGeneratedColumn()
-  id!: number
+  id!: number;
 
   @Column({ unique: true })
-  email!: string
+  email!: string;
 
   @Column()
-  firstName!: string
+  firstName!: string;
 
   @Column()
-  lastName!: string
+  lastName!: string;
 
   @Column()
-  age!: number
+  age!: number;
 
   @Column()
-  hashed_password!: string
+  hashed_password!: string;
 
   @Column()
-  salt!: string
+  salt!: string;
 
-  @Column({ type: 'timestamptz' })
-  birthday!: Date
+  @Column({ type: "timestamptz" })
+  birthday!: Date;
 
   @CreateDateColumn()
-  created_at!: Date
+  created_at!: Date;
 
   @UpdateDateColumn()
-  updated_at!: Date
+  updated_at!: Date;
 
   @DeleteDateColumn()
-  deleted_at!: Date
+  deleted_at!: Date;
 }
