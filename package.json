@@ -10,7 +10,8 @@
   "scripts": {
     "start": "node --env-file=.env dist/main.js",
     "build": "rimraf ./dist && tsc && tsc-alias",
-    "dev": "node --watch --env-file=.env -r ts-node/register -r tsconfig-paths/register ./src/main.ts",
+    "dev": "node --watch --env-file=.env --env-file=.development.env -r ts-node/register -r tsconfig-paths/register ./src/main.ts",
+    "dev:docker": "docker compose --env-file .development.env up dev",
     "lint": "npx eslint src",
     "lint:fix": "npm run lint -- --fix",
     "prettier": "npx prettier src --check",

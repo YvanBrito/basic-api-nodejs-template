@@ -1,10 +1,9 @@
-version: "3.8"
+version: '3.8'
 
 services:
   basic_api_node_template_db:
     image: postgres
     restart: unless-stopped
-    env_file: ./.env
     environment:
       - POSTGRES_USER=$POSTGRESDB_USER
       - POSTGRES_PASSWORD=$POSTGRESDB_ROOT_PASSWORD
