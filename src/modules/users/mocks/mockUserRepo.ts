@@ -22,13 +22,12 @@ export class MockUserRepository implements IUserRepository {
     return foundUser;
   }
 
-  async getByEmail(email: string): Promise<IUser> {
+  async getByEmail(email: string): Promise<IUser | null> {
     const foundUser = this.users.find(
       (user) => user.email.toString() === email,
     );
-    if (!foundUser) throw new NotFoundError('Usuário não encontrado');
 
-    return foundUser;
+    return foundUser ?? null;
   }
 
   async save(user: IUser): Promise<IUser> {

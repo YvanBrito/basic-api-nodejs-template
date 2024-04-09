@@ -1,4 +1,4 @@
-import { UserPostgresRepository } from '@/modules/users/repositories';
+import { UserRepository } from '@/modules/users/repositories';
 import { createHash } from 'node:crypto';
 import { Strategy as LocalStrategy } from 'passport-local';
 import { NotFoundError, UnauthorizedError } from './errors';
@@ -9,7 +9,7 @@ export const localStrategy = new LocalStrategy(
     passwordField: 'password',
   },
   async (email, password, done) => {
-    const userRepository = new UserPostgresRepository();
+    const userRepository = new UserRepository();
     const foundUser = await userRepository.getByEmail(email);
     if (!foundUser)
       return done(new NotFoundError('Email não encontrado'), false);

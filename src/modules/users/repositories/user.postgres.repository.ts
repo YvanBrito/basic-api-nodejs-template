@@ -2,8 +2,12 @@ import { IUser, IUserRepository } from '../types';
 import { AppDataSource } from '@/data-source';
 import { User } from '../entity/User';
 
-export class UserPostgresRepository implements IUserRepository {
+export class UserRepository implements IUserRepository {
   private userRepository = AppDataSource.getRepository(User);
+
+  async save(user: IUser): Promise<IUser> {
+    return await this.userRepository.save(user);
+  }
 
   async getAll(): Promise<IUser[]> {
     return await this.userRepository.find();

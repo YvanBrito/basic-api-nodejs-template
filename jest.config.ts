@@ -2,15 +2,17 @@ module.exports = {
   // Automatically clear mock calls and instances between every test
   clearMocks: true,
   // The directory where Jest should output its coverage files
-  coverageDirectory: "coverage",
+  coverageDirectory: 'coverage',
+  collectCoverageFrom: ['<rootDir>/src/**/*.{js,jsx,ts,tsx}'],
   // An array of file extensions your modules use
-  moduleFileExtensions: ["js", "json", "jsx", "ts", "tsx", "node"],
+  moduleFileExtensions: ['js', 'json', 'jsx', 'ts', 'tsx', 'node'],
   // The test environment that will be used for testing
-  testEnvironment: "node",
+  testEnvironment: 'node',
   // A preset that is used as a base for Jest's configuration
-  preset: "ts-jest",
-  moduleDirectories: ["node_modules", "<rootDir>/src"],
+  preset: 'ts-jest',
+  moduleDirectories: ['node_modules', '<rootDir>/src'],
   moduleNameMapper: {
-    "@/(.*)": "<rootDir>/src/$1",
+    '@/(.*)': '<rootDir>/src/$1',
   },
+  testPathIgnorePatterns: ['<rootDir>/dist/', '<rootDir>/node_modules/'],
 };

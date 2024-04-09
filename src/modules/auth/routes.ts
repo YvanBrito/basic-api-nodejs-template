@@ -33,7 +33,7 @@ authRoutes.post('/login', async (req, res, next) => {
         if (error) return next(error);
 
         const body = { id: user.id, email: user.email };
-        const token = jwt.sign({ user: body }, 'TOP_SECRET');
+        const token = jwt.sign({ user: body }, process.env.TOKEN_SECRET ?? '');
 
         return res.json({ token });
       });

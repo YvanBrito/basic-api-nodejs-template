@@ -1,4 +1,4 @@
-import { UserPostgresRepository } from '@/modules/users/repositories/user.postgres.repository';
+import { UserRepository } from '@/modules/users/repositories/user.postgres.repository';
 import { IUser, IUserRepository, IUserService } from '../types';
 import { NotFoundError } from '@/utils/errors';
 
@@ -16,4 +16,4 @@ export class UserService implements IUserService {
   }
 }
 
-export const userService = new UserService(new UserPostgresRepository());
+export const userService = new UserService(new UserRepository());

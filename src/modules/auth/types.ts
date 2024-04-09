@@ -1,5 +1,3 @@
-import { IUser } from '../users/types';
-
 export interface CreateUserRequest {
   firstName: string;
   lastName: string;
@@ -21,8 +19,4 @@ export interface LoginUserResponse {
 export interface IAuthService {
   signup: (user: CreateUserRequest) => Promise<void>;
   // login: (user: LoginUserRequest) => Promise<LoginUserResponse>
-}
-
-export interface IAuthRepository {
-  save: (user: IUser) => Promise<IUser>;
 }

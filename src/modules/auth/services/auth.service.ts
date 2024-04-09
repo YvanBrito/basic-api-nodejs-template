@@ -1,15 +1,11 @@
 import { randomBytes, createHash } from 'node:crypto';
 import { DuplicateError } from '@/utils/errors';
 import { IUser, IUserRepository } from '@/modules/users/types';
-import { IAuthService, IAuthRepository, CreateUserRequest } from '../types';
-import { UserPostgresRepository } from '@/modules/users/repositories';
-import { AuthPostgresRepository } from '../repositories/auth.postgres.repository';
+import { IAuthService, CreateUserRequest } from '../types';
+import { UserRepository } from '@/modules/users/repositories';
 
 export class AuthService implements IAuthService {
-  constructor(
-    public authRepository: IAuthRepository,
-    public userRepository: IUserRepository,
-  ) {}
+  constructor(public userRepository: IUserRepository) {}
 
   async signup(createUserRequest: CreateUserRequest): Promise<void> {
     const foundUser = await this.userRepository.getByEmail(
@@ -32,7 +28,7 @@ export class AuthService implements IAuthService {
       hashed_password,
       salt,
     };
-    await this.authRepository.save(newUser);
+    await this.userRepository.save(newUser);
   }
 
   // async login(loginUserRequest: LoginUserRequest): Promise<LoginUserResponse> {
@@ -40,7 +36,4 @@ export class AuthService implements IAuthService {
   // }
 }
 
-export const authService = new AuthService(
-  new AuthPostgresRepository(),
-  new UserPostgresRepository(),
-);
+export const authService = new AuthService(new UserRepository());

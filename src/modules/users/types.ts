@@ -21,4 +21,5 @@ export interface IUserRepository {
   getAll: () => Promise<IUser[]>;
   getById: (id: string) => Promise<IUser | null>;
   getByEmail: (email: string) => Promise<IUser | null>;
+  save: (user: IUser) => Promise<IUser>;
 }
