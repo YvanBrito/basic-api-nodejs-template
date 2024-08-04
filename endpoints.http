@@ -4,7 +4,7 @@
 GET {{apiurl}}/users HTTP/1.1
 
 ### GET user by id
-GET {{apiurl}}/users/5 HTTP/1.1
+GET {{apiurl}}/users/1 HTTP/1.1
 
 ### POST users
 POST {{apiurl}}/signup HTTP/1.1

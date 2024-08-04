@@ -1,8 +1,7 @@
-import { UserController } from '@/modules/users/controllers/user.controller';
 import { MockUserRepository } from '@/modules/users/mocks/mockUserRepo';
 import { IUser } from '@/modules/users/types';
-import { NotFoundError } from '@/utils/errors';
-import { UserService } from '@/modules/users/services/user.service';
+import { GetAllUsersController } from './get-all-users.controller';
+import { GetAllUsersService } from '../services/get-all-users.service';
 
 const usersMocked: IUser[] = [
   {
@@ -32,29 +31,17 @@ const usersMocked: IUser[] = [
     salt: 'werwerer',
   },
 ];
-describe('UsersController', () => {
-  let userController: UserController;
+describe('GetAllUsersController', () => {
+  let getAllUsersController: GetAllUsersController;
   beforeEach(() => {
-    userController = new UserController(
-      new UserService(new MockUserRepository(usersMocked)),
+    getAllUsersController = new GetAllUsersController(
+      new GetAllUsersService(new MockUserRepository(usersMocked)),
     );
   });
 
   it('should 200 with an array of users', async () => {
-    const { statusCode, body } = await userController.getUsers();
+    const { statusCode, body } = await getAllUsersController.execute();
     expect(statusCode).toEqual(200);
     expect(body).toEqual(usersMocked);
-  });
-
-  it('should return user by id', async () => {
-    const { statusCode, body } = await userController.getById('1');
-    expect(statusCode).toEqual(200);
-    expect(body).toEqual(usersMocked[0]);
-  });
-
-  it('should return 404 error with a message', async () => {
-    await expect(userController.getById('3')).rejects.toEqual(
-      new NotFoundError('Usuário não encontrado'),
-    );
   });
 });

@@ -31,7 +31,7 @@ AppDataSource.initialize()
 
     app.use(
       session({
-        secret: 'keyboard cat',
+        secret: process.env.PASSPORT_SECRET || '',
         resave: false,
         saveUninitialized: false,
         rolling: true,
