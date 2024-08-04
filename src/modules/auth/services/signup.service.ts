@@ -1,13 +1,13 @@
 import { randomBytes, createHash } from 'node:crypto';
 import { DuplicateError } from '@/utils/errors';
 import { IUser, IUserRepository } from '@/modules/users/types';
-import { IAuthService, CreateUserRequest } from '../types';
+import { ISignUpService, CreateUserRequest } from '../types';
 import { UserRepository } from '@/modules/users/repositories';
 
-export class AuthService implements IAuthService {
+export class SignUpService implements ISignUpService {
   constructor(public userRepository: IUserRepository) {}
 
-  async signup(createUserRequest: CreateUserRequest): Promise<void> {
+  async execute(createUserRequest: CreateUserRequest): Promise<void> {
     const foundUser = await this.userRepository.getByEmail(
       createUserRequest.email,
     );
@@ -36,4 +36,4 @@ export class AuthService implements IAuthService {
   // }
 }
 
-export const authService = new AuthService(new UserRepository());
+export const signUpService = new SignUpService(new UserRepository());

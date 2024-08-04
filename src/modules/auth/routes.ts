@@ -1,15 +1,16 @@
 import { Router } from 'express';
 import passport from 'passport';
-import jwt from 'jsonwebtoken';
-import { authController } from './controllers/auth.controller';
+import { signUpController } from './controllers/signup.controller';
 import { HttpErrorResponse } from '@/utils/errors';
+import { loginController } from './controllers/login.controller';
+import { LoginUserRequest } from './types';
 
 const authRoutes = Router();
 
 authRoutes.post('/signup', async (req, res, next) => {
   try {
     const newUser = req.body;
-    const { statusCode, body } = await authController.signup(newUser);
+    const { statusCode, body } = await signUpController.signup(newUser);
     res.status(statusCode).json(body);
   } catch (err: unknown) {
     next(err);
@@ -32,10 +33,14 @@ authRoutes.post('/login', async (req, res, next) => {
       req.login(user, { session: false }, async (error) => {
         if (error) return next(error);
 
-        const body = { id: user.id, email: user.email };
-        const token = jwt.sign({ user: body }, process.env.TOKEN_SECRET ?? '');
-
-        return res.json({ token });
+        try {
+          const { statusCode, body } = await loginController.execute(
+            user as unknown as LoginUserRequest,
+          );
+          res.status(statusCode).json(body);
+        } catch (err: unknown) {
+          next(err);
+        }
       });
     },
   )(req, res, next);

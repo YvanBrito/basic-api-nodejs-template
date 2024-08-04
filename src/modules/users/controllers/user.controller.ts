@@ -1,4 +1,4 @@
-import { userService } from '@/modules/users/services/user.service';
+import { userService } from '../services/user.service';
 import { IUserService } from '../types';
 
 class UserController {

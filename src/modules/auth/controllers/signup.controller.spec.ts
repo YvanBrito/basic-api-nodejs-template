@@ -1,6 +1,6 @@
 import { MockUserRepository } from '@/modules/users/mocks/mockUserRepo';
-import { AuthController } from './auth.controller';
-import { AuthService } from '../services/auth.service';
+import { SignUpController } from './signup.controller';
+import { SignUpService } from '../services/signup.service';
 
 const mockedUser = {
   firstName: 'Joao',
@@ -11,16 +11,16 @@ const mockedUser = {
   password: '',
 };
 
-describe('AuthController', () => {
-  let authController: AuthController;
+describe('SignUpController', () => {
+  let signUpController: SignUpController;
   beforeEach(() => {
-    authController = new AuthController(
-      new AuthService(new MockUserRepository([])),
+    signUpController = new SignUpController(
+      new SignUpService(new MockUserRepository([])),
     );
   });
 
   it('should 200 with an array of users', async () => {
-    const { statusCode } = await authController.signup(mockedUser);
+    const { statusCode } = await signUpController.signup(mockedUser);
     expect(statusCode).toEqual(200);
   });
 });

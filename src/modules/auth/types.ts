@@ -8,15 +8,18 @@ export interface CreateUserRequest {
 }
 
 export interface LoginUserRequest {
+  id: number;
   email: string;
-  password: string;
 }
 
 export interface LoginUserResponse {
   token: string;
 }
 
-export interface IAuthService {
-  signup: (user: CreateUserRequest) => Promise<void>;
-  // login: (user: LoginUserRequest) => Promise<LoginUserResponse>
+export interface ISignUpService {
+  execute: (user: CreateUserRequest) => Promise<void>;
+}
+
+export interface ILoginService {
+  execute: (user: LoginUserRequest) => Promise<LoginUserResponse>;
 }
